@@ -104,8 +104,25 @@
   .nav-cta:active { transform: scale(0.96); }
   .nav-cta svg { width: 15px; height: 15px; }
 
+  /* ===== Top banner (photo + text overlay) ===== */
+  .banner { position: relative; width: 100%; height: 46vh; min-height: 300px; max-height: 460px; overflow: hidden; background: #060606; }
+  .banner-media { position: absolute; inset: 0; }
+  .banner-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; will-change: transform; animation: kenburns 38s ease-in-out infinite; }
+  @keyframes kenburns {
+    0%   { transform: scale(1.1)  translate3d(-1.4%, 0.6%, 0); }
+    50%  { transform: scale(1.18) translate3d(1.4%, -1%, 0); }
+    100% { transform: scale(1.1)  translate3d(-1.4%, 0.6%, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .banner-media img { animation: none; transform: scale(1.05); } }
+  .banner-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,6,6,0.55) 0%, rgba(6,6,6,0.22) 38%, rgba(6,6,6,0.55) 74%, var(--bg) 100%); }
+  .banner-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px 22px 44px; }
+  .banner-content .bk { font-family: var(--serif); font-size: clamp(46px, 15vw, 92px); font-weight: 900; line-height: 0.92; letter-spacing: 0.02em; color: var(--champ); text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
+  .banner-content .bk2 { font-family: var(--serif); font-size: clamp(15px, 4.8vw, 26px); font-weight: 800; letter-spacing: 0.42em; padding-left: 0.42em; margin-top: 8px; color: var(--champ); text-shadow: 0 2px 22px rgba(0,0,0,0.6); }
+  .banner-content .bline { width: 38px; height: 2px; background: var(--gold-grad); opacity: 0.9; border-radius: 2px; margin: 16px 0 13px; }
+  .banner-content .btag { font-size: clamp(11px, 3vw, 13px); font-weight: 700; letter-spacing: 0.06em; color: rgba(247,244,236,0.92); text-shadow: 0 1px 16px rgba(0,0,0,0.7); }
+
   /* ===== Hero ===== */
-  .hero { position: relative; padding: 46px 0 70px; overflow: hidden; text-align: center; }
+  .hero { position: relative; padding: 34px 0 64px; overflow: hidden; text-align: center; }
   .hero::before {
     content: ""; position: absolute; inset: 0; z-index: -2;
     background:
@@ -120,7 +137,6 @@
     mask-image: radial-gradient(680px 460px at 50% 8%, #000 25%, transparent 78%);
     -webkit-mask-image: radial-gradient(680px 460px at 50% 8%, #000 25%, transparent 78%);
   }
-  .hero-logo { height: clamp(60px, 17vw, 88px); width: auto; margin: 0 auto; }
   .hero h1 {
     font-family: var(--serif); font-size: clamp(28px, 7.4vw, 48px); font-weight: 900; line-height: 1.5; letter-spacing: 0.01em;
     margin: 22px auto 0; max-width: 16em;
@@ -229,7 +245,7 @@
 
   /* ===== Testimonials ===== */
   .tm-feature { max-width: 680px; margin: 0 auto; }
-  .tm-quote { text-align: center; max-width: 600px; margin: 26px auto 0; font-family: var(--serif); font-size: clamp(16px, 4.4vw, 20px); font-weight: 600; line-height: 1.9; color: var(--fg); }
+  .tm-quote { text-align: center; max-width: 560px; margin: 22px auto 0; font-family: var(--serif); font-size: clamp(13.5px, 3.6vw, 17px); font-weight: 600; line-height: 1.75; color: var(--fg); }
   .tm-quote .mark { color: var(--gold); font-family: var(--display); font-size: 1.6em; line-height: 0; vertical-align: -0.2em; }
   .tm-by { text-align: center; margin-top: 18px; font-size: 13px; color: var(--gold-2); font-weight: 700; letter-spacing: 0.04em; }
 
@@ -355,13 +371,26 @@
   </div>
 </header>
 
+<!-- TOP BANNER (photo + text) -->
+<section class="banner" aria-label="KNCT UNIVERSITY">
+  <div class="banner-media">
+    <img src="assets/community.jpg" alt="KNCT UNIVERSITY コミュニティ" width="1920" height="1460" fetchpriority="high" />
+  </div>
+  <div class="banner-overlay"></div>
+  <div class="banner-content">
+    <div class="bk">KNCT</div>
+    <div class="bk2">UNIVERSITY</div>
+    <div class="bline"></div>
+    <div class="btag">SNS収益化を学ぶ実践コミュニティ</div>
+  </div>
+</section>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="wrap">
-    <img class="hero-logo reveal" src="assets/og-image.png" alt="KNCT UNIVERSITY" width="300" height="300" />
     <h1 class="reveal">発信する人ではなく、<br><span class="hl gold">売上を作る人</span>へ。</h1>
-    <p class="lead reveal">「フォロワー0」「経験0」からでも、<br><b>クリエイターの裏側で収益を生み出す</b>——<br>オペレーターという働き方。</p>
+    <p class="lead reveal">「フォロワー0」「経験0」からでも、<br><b>クリエイターの裏側で収益を生み出す</b>、<br>オペレーターという働き方。</p>
 
     <!-- MAIN VIDEO -->
     <div class="video hero-video reveal" data-yt="1hsTWlT9HQ0">
@@ -471,7 +500,7 @@
         </button>
         <div class="video-label"><span class="lp">Interview</span>ショウコさんのリアルな声を見る</div>
       </div>
-      <p class="tm-quote reveal"><span class="mark">“</span>知識を入れるだけのスクールとは全く違った。<br>実際に案件を動かしながら学べたから、<br><span class="gold">気づいたら売上が立っていた。</span><span class="mark">”</span></p>
+      <p class="tm-quote reveal">知識を入れるだけのスクールとは全く違った。<br>実際に案件を動かしながら学べたから、<br><span class="gold">気づいたら売上が立っていた。</span></p>
       <div class="tm-by reveal">— ショウコさん｜KNCT UNIVERSITY 受講生</div>
     </div>
 
