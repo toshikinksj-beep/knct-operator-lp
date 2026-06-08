@@ -241,10 +241,17 @@
   .note-strong strong .gold { font-weight: 800; }
 
   /* ===== Testimonials ===== */
-  .tm-feature { max-width: 680px; margin: 0 auto; }
-  .tm-quote { text-align: center; max-width: 560px; margin: 22px auto 0; font-family: var(--serif); font-size: clamp(13.5px, 3.6vw, 17px); font-weight: 600; line-height: 1.75; color: var(--fg); }
-  .tm-quote .mark { color: var(--gold); font-family: var(--display); font-size: 1.6em; line-height: 0; vertical-align: -0.2em; }
-  .tm-by { text-align: center; margin-top: 18px; font-size: 13px; color: var(--gold-2); font-weight: 700; letter-spacing: 0.04em; }
+  .tm-feature { max-width: 680px; margin: 0 auto 20px; border: 1px solid var(--line-strong); border-radius: 22px; background: var(--surface); padding: 14px; position: relative; overflow: hidden; box-shadow: 0 30px 70px -40px rgba(0,0,0,0.8); }
+  .tm-feature::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold-grad); opacity: 0.85; }
+  .tm-feature .video { border-radius: 16px; }
+  .tm-body { padding: 20px 14px 6px; }
+  .tm-cap { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 14px; }
+  .tm-cap svg { width: 14px; height: 14px; }
+  .tm-story { font-size: clamp(13.5px, 3.5vw, 15px); line-height: 1.95; color: var(--muted); text-align: left; }
+  .tm-story p + p { margin-top: 12px; }
+  .tm-story b { color: var(--fg); font-weight: 700; }
+  .tm-author { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .tm-author .tm-role { color: var(--gold-2); font-weight: 600; }
 
   /* Testimonial grid (video frames + future placeholders) */
   .tm-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
@@ -470,18 +477,31 @@
       <p>知識だけでは終わらせない。実際に案件を動かし、売上を作った受講生の声。</p>
     </div>
 
-    <!-- Featured video testimonial -->
-    <div class="tm-feature">
-      <div class="video reveal" data-yt="gjc7hgcprKM">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/gjc7hgcprKM/maxresdefault.jpg" alt="受講生インタビュー動画" loading="lazy" width="1280" height="720" />
+    <!-- Featured video testimonial (framed: video + story) -->
+    <div class="tm-feature reveal">
+      <div class="video" data-yt="gjc7hgcprKM">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/gjc7hgcprKM/maxresdefault.jpg" alt="Shoko インタビュー動画" loading="lazy" width="1280" height="720" />
         <div class="video-veil"></div>
         <button class="video-play" aria-label="動画を再生">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         </button>
-        <div class="video-label"><span class="lp">Interview</span>SHOKO のリアルな声を見る</div>
+        <div class="video-label"><span class="lp">Interview</span>Shoko のリアルな声を見る</div>
       </div>
-      <p class="tm-quote reveal">知識を入れるだけのスクールとは全く違った。<br>実際に案件を動かしながら学べたから、<br><span class="gold">気づいたら売上が立っていた。</span></p>
-      <div class="tm-by reveal">— SHOKO｜インバウンド事業クリエイター兼オペレーター</div>
+      <div class="tm-body">
+        <div class="tm-cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          上の動画について
+        </div>
+        <div class="tm-story">
+          <p>KNCTにオペレーターとして入り、まず自分自身がクリエイターとなりインバウンドの観光事業を展開。KNCTでオペレーターマインドセットを学び、インスタで発信を始め<b>2ヶ月で、インスタからの集客のみで月の売上100万円</b>を達成。</p>
+          <p>彼女の発信を見たインバウンド企業から、「オペレーターとしてインスタを手伝って欲しい」と連絡が来るようになりました。</p>
+          <p>今後は自分自身のビジネスを伸ばしながら、今度は<b>オペレーターとして他の人を支える</b>方向で動き始めています。</p>
+        </div>
+        <div class="tm-author">
+          <div class="tm-ava">S</div>
+          <div><div class="tm-name">Shoko</div><div class="tm-role">インバウンド事業クリエイター兼オペレーター</div></div>
+        </div>
+      </div>
     </div>
 
     <!-- Voices: all testimonials -->
