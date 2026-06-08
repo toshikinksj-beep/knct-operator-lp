@@ -104,32 +104,19 @@
   .nav-cta:active { transform: scale(0.96); }
   .nav-cta svg { width: 15px; height: 15px; }
 
-  /* ===== Top banner (photo + text overlay) ===== */
-  .banner { position: relative; width: 100%; height: 46vh; min-height: 300px; max-height: 460px; overflow: hidden; background: #060606; }
-  .banner-media { position: absolute; inset: 0; }
-  .banner-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; will-change: transform; animation: kenburns 38s ease-in-out infinite; }
-  @keyframes kenburns {
-    0%   { transform: scale(1.1)  translate3d(-1.4%, 0.6%, 0); }
-    50%  { transform: scale(1.18) translate3d(1.4%, -1%, 0); }
-    100% { transform: scale(1.1)  translate3d(-1.4%, 0.6%, 0); }
-  }
-  @media (prefers-reduced-motion: reduce) { .banner-media img { animation: none; transform: scale(1.05); } }
-  .banner-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,6,6,0.55) 0%, rgba(6,6,6,0.22) 38%, rgba(6,6,6,0.55) 74%, var(--bg) 100%); }
-  .banner-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px 22px 44px; }
-  .banner-content .bk { font-family: var(--serif); font-size: clamp(46px, 15vw, 92px); font-weight: 900; line-height: 0.92; letter-spacing: 0.02em; color: var(--champ); text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
-  .banner-content .bk2 { font-family: var(--serif); font-size: clamp(15px, 4.8vw, 26px); font-weight: 800; letter-spacing: 0.42em; padding-left: 0.42em; margin-top: 8px; color: var(--champ); text-shadow: 0 2px 22px rgba(0,0,0,0.6); }
-  .banner-content .bline { width: 38px; height: 2px; background: var(--gold-grad); opacity: 0.9; border-radius: 2px; margin: 16px 0 13px; }
-  .banner-content .btag { font-size: clamp(11px, 3vw, 13px); font-weight: 700; letter-spacing: 0.06em; color: rgba(247,244,236,0.92); text-shadow: 0 1px 16px rgba(0,0,0,0.7); }
-
-  /* ===== Hero ===== */
-  .hero { position: relative; padding: 34px 0 64px; overflow: hidden; text-align: center; }
+  /* ===== Hero (compact, gradient top) ===== */
+  .hero { position: relative; padding: 20px 0 40px; overflow: hidden; text-align: center; }
   .hero::before {
     content: ""; position: absolute; inset: 0; z-index: -2;
     background:
-      radial-gradient(700px 380px at 50% -6%, rgba(236,231,211,0.16), transparent 70%),
-      radial-gradient(900px 600px at 50% 120%, rgba(236,231,211,0.05), transparent 70%),
-      var(--bg);
+      radial-gradient(620px 300px at 50% 10%, rgba(236,231,211,0.10), transparent 70%),
+      linear-gradient(180deg, #000000 0%, #050506 16%, var(--bg) 46%);
   }
+  .hero-brand { display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; }
+  .hero-brand .hb-main { font-family: var(--serif); font-weight: 900; font-size: clamp(34px, 10vw, 58px); line-height: 0.96; letter-spacing: 0.03em; color: var(--champ); }
+  .hero-brand .hb-sub { font-family: var(--serif); font-weight: 800; font-size: clamp(12px, 3.6vw, 17px); letter-spacing: 0.4em; padding-left: 0.4em; color: var(--champ); margin-top: 5px; }
+  .hero-brand .hb-line { width: 34px; height: 2px; background: var(--gold-grad); opacity: 0.9; border-radius: 2px; margin-top: 11px; }
+  .sp-br { display: inline; }
   .hero-grid {
     position: absolute; inset: 0; z-index: -1; opacity: 0.5;
     background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
@@ -138,11 +125,12 @@
     -webkit-mask-image: radial-gradient(680px 460px at 50% 8%, #000 25%, transparent 78%);
   }
   .hero h1 {
-    font-family: var(--serif); font-size: clamp(28px, 7.4vw, 48px); font-weight: 900; line-height: 1.5; letter-spacing: 0.01em;
-    margin: 22px auto 0; max-width: 16em;
+    font-family: var(--serif); font-size: clamp(27px, 7vw, 46px); font-weight: 900; line-height: 1.45; letter-spacing: 0.01em;
+    margin: 0 auto; max-width: 16em;
   }
   .hero h1 .hl { position: relative; white-space: nowrap; }
-  .hero .lead { font-size: clamp(14.5px, 3.9vw, 17px); color: var(--muted); margin: 22px auto 0; max-width: 26em; font-weight: 500; }
+  .hero .lead { font-size: clamp(13.5px, 3.7vw, 16px); color: var(--muted); margin: 12px auto 0; max-width: 26em; font-weight: 500; line-height: 1.75; }
+  .hero .cta-block { margin-top: 20px; }
   .hero .lead b { color: var(--fg); font-weight: 700; }
 
   /* ===== Video player (facade) ===== */
@@ -151,7 +139,7 @@
     cursor: pointer; background: #000; border: 1px solid var(--line-strong);
     box-shadow: 0 40px 80px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(236,231,211,0.10);
   }
-  .video.hero-video { max-width: 680px; margin: 34px auto 0; box-shadow: 0 50px 110px -45px rgba(0,0,0,0.95), 0 0 0 1px rgba(236,231,211,0.22); }
+  .video.hero-video { max-width: 680px; margin: 18px auto 0; box-shadow: 0 50px 110px -45px rgba(0,0,0,0.95), 0 0 0 1px rgba(236,231,211,0.22); }
   .video::after {
     content: ""; position: absolute; inset: 0; border-radius: 20px; pointer-events: none;
     box-shadow: inset 0 0 0 1px rgba(236,231,211,0.18);
@@ -353,6 +341,7 @@
     .tcards { grid-template-columns: 1fr 1fr; }
     .final { padding: 72px 48px; }
     .sticky-cta { display: none; }
+    .sp-br { display: none; }
   }
 </style>
 </head>
@@ -371,24 +360,15 @@
   </div>
 </header>
 
-<!-- TOP BANNER (photo + text) -->
-<section class="banner" aria-label="KNCT UNIVERSITY">
-  <div class="banner-media">
-    <img src="assets/community.jpg" alt="KNCT UNIVERSITY コミュニティ" width="1920" height="1460" fetchpriority="high" />
-  </div>
-  <div class="banner-overlay"></div>
-  <div class="banner-content">
-    <div class="bk">KNCT</div>
-    <div class="bk2">UNIVERSITY</div>
-    <div class="bline"></div>
-    <div class="btag">SNS収益化を学ぶ実践コミュニティ</div>
-  </div>
-</section>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="wrap">
+    <div class="hero-brand reveal">
+      <span class="hb-main">KNCT</span>
+      <span class="hb-sub">UNIVERSITY</span>
+      <span class="hb-line"></span>
+    </div>
     <h1 class="reveal">発信する人ではなく、<br><span class="hl gold">売上を作る人</span>へ。</h1>
     <p class="lead reveal">「フォロワー0」「経験0」からでも、<br><b>クリエイターの裏側で収益を生み出す</b>、<br>オペレーターという働き方。</p>
 
@@ -399,7 +379,7 @@
       <button class="video-play" aria-label="動画を再生">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </button>
-      <div class="video-label"><span class="lp">Watch</span>「オペレーター」とは何かがわかる動画</div>
+      <div class="video-label"><span class="lp">Watch</span>「オペレーター」について完全解説</div>
     </div>
 
     <div class="cta-block reveal">
@@ -449,7 +429,7 @@
     <div class="head reveal">
       <span class="eyebrow"><span class="dot"></span>What is an Operator</span>
       <h2 style="margin-top:18px;">「発信する人」ではなく、<br><span class="gold">売上を作る人</span>。</h2>
-      <p>今、SNSクリエイターは大量にいます。でも、<b style="color:var(--fg);font-weight:700;">売上を作れる人は圧倒的に少ない。</b>多くのクリエイターは「収益化の設計」がないからです。</p>
+      <p>今、SNSクリエイターは大量にいます。<br class="sp-br">でも、<b style="color:var(--fg);font-weight:700;">売上を作れる人は圧倒的に少ない。</b><br class="sp-br">多くのクリエイターは「収益化の設計」がないからです。</p>
     </div>
 
     <div class="vs">
@@ -498,107 +478,85 @@
         <button class="video-play" aria-label="動画を再生">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         </button>
-        <div class="video-label"><span class="lp">Interview</span>ショウコさんのリアルな声を見る</div>
+        <div class="video-label"><span class="lp">Interview</span>SHOKO のリアルな声を見る</div>
       </div>
       <p class="tm-quote reveal">知識を入れるだけのスクールとは全く違った。<br>実際に案件を動かしながら学べたから、<br><span class="gold">気づいたら売上が立っていた。</span></p>
-      <div class="tm-by reveal">— ショウコさん｜KNCT UNIVERSITY 受講生</div>
+      <div class="tm-by reveal">— SHOKO｜インバウンド事業クリエイター兼オペレーター</div>
     </div>
 
     <!-- Voices: all testimonials -->
     <div class="tcards">
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">アカウント・コンテンツすべてゼロからのスタートでした。実例を分解しながら素直に実行した結果、初月でフォロワー380人まで成長。サッカー選手向け英語コーチングのサポート案件にも繋がりました。</p>
+      <div class="tcard reveal">        <p class="tquote">アカウント・コンテンツすべてゼロからのスタートでした。実例を分解しながら素直に実行した結果、初月でフォロワー380人まで成長。サッカー選手向け英語コーチングのサポート案件にも繋がりました。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/yuuki.jpg" alt="Yuuki さん" loading="lazy" /></div>
           <div><div class="tname">Yuuki さん</div><div class="trole">英語コーチング支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">入会して3日目、学んだ対話・提案の進め方をそのまま実践し、フィットネス系クリエイターさんとの初契約まで進めました。その後2人目のクリエイターさんとも契約に至り、コミュニケーション設計とオファー設計を組み合わせた、自分なりの提案の型ができてきた手応えがあります。</p>
+      <div class="tcard reveal">        <p class="tquote">入会して3日目、学んだ対話・提案の進め方をそのまま実践し、フィットネス系クリエイターさんとの初契約まで進めました。その後2人目のクリエイターさんとも契約に至り、コミュニケーション設計とオファー設計を組み合わせた、自分なりの提案の型ができてきた手応えがあります。</p>
         <div class="tauthor">
           <div class="tava">K</div>
           <div><div class="tname">komotaku さん</div><div class="trole">クリエイター支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">クリエイターさんの1日イベントの企画運営に裏方として参加。学んだことを実践し、初めて案件支援を経験できました。現場に出ると、自信のつき方が違います。</p>
+      <div class="tcard reveal">        <p class="tquote">クリエイターさんの1日イベントの企画運営に裏方として参加。学んだことを実践し、初めて案件支援を経験できました。現場に出ると、自信のつき方が違います。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/ryoma.jpg" alt="Ryoma さん" loading="lazy" /></div>
           <div><div class="tname">Ryoma さん</div><div class="trole">クリエイターイベント支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">フィットネス系とガイドツアー系、2人のクリエイターさんと並行して支援契約を結びました。どちらもアカウントもサービスもゼロからの立ち上げで、未経験領域ですが、学びを実践に変える機会として向き合っています。</p>
+      <div class="tcard reveal">        <p class="tquote">フィットネス系とガイドツアー系、2人のクリエイターさんと並行して支援契約を結びました。どちらもアカウントもサービスもゼロからの立ち上げで、未経験領域ですが、学びを実践に変える機会として向き合っています。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/kai.jpg" alt="Kai さん" loading="lazy" /></div>
           <div><div class="tname">Kai さん</div><div class="trole">フィットネス・ツアー支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">フィットネスに続き、英語クリエイターさんとも支援契約を結ぶことができました。4ヶ月前は「オペレーター」という言葉さえ知らなかった自分でも、業界を問わずに学びを活かせる。それがこのスキルの価値だと感じています。</p>
+      <div class="tcard reveal">        <p class="tquote">フィットネスに続き、英語クリエイターさんとも支援契約を結ぶことができました。4ヶ月前は「オペレーター」という言葉さえ知らなかった自分でも、業界を問わずに学びを活かせる。それがこのスキルの価値だと感じています。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/taiyo.jpg" alt="Taiyo さん" loading="lazy" /></div>
           <div><div class="tname">Taiyo さん</div><div class="trole">英語クリエイター支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">整体事業のお客様だった国際薬膳師の方が、マンツーマン薬膳レッスンを始めたいけれど集客・オファー・商品設計の進め方が分からない、と。学んできたフレームをそのまま使って、お試しサポートから関係性を作り始めています。</p>
+      <div class="tcard reveal">        <p class="tquote">整体事業のお客様だった国際薬膳師の方が、マンツーマン薬膳レッスンを始めたいけれど集客・オファー・商品設計の進め方が分からない、と。学んできたフレームをそのまま使って、お試しサポートから関係性を作り始めています。</p>
         <div class="tauthor">
           <div class="tava">T</div>
           <div><div class="tname">Takumi さん</div><div class="trole">薬膳師支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">フォロワー4万人の方には相手にされないだろう、と思いながら恐る恐るDMを送りました。実際にお話を聞いてみると、進め方が分からず一人で抱えていた状態だったとのこと。今は支援者として並走しています。</p>
+      <div class="tcard reveal">        <p class="tquote">フォロワー4万人の方には相手にされないだろう、と思いながら恐る恐るDMを送りました。実際にお話を聞いてみると、進め方が分からず一人で抱えていた状態だったとのこと。今は支援者として並走しています。</p>
         <div class="tauthor">
           <div class="tava">U</div>
           <div><div class="tname">Uta さん</div><div class="trole">クリエイター支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">海外ママのクリエイターさんとの面談から、3ヶ月の支援契約をいただきました。アメリカの夏休みに向けて、5月中にローンチして最初の成約までサポートする形で並走しています。緊張した初面談で「何者ですか?」と聞かれた反省点もありますが、一歩進めて嬉しいです。</p>
+      <div class="tcard reveal">        <p class="tquote">海外ママのクリエイターさんとの面談から、3ヶ月の支援契約をいただきました。アメリカの夏休みに向けて、5月中にローンチして最初の成約までサポートする形で並走しています。緊張した初面談で「何者ですか?」と聞かれた反省点もありますが、一歩進めて嬉しいです。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/kanna.jpg" alt="Kanna さん" loading="lazy" /></div>
           <div><div class="tname">Kanna さん</div><div class="trole">海外ママクリエイター支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">旦那さんのアカウントで、初めてのオンライン収益化に挑戦。30〜40代男性向けの腕トレ完全ガイドをEbook形式で提供し、最初の売上が立ちました。さらにクリエイターと共に、約35万円の売上を上げることにも成功。正しいやり方を教えてくれる環境と、第三者の目線で意見をくれる仲間のおかげです。</p>
+      <div class="tcard reveal">        <p class="tquote">旦那さんのアカウントで、初めてのオンライン収益化に挑戦。30〜40代男性向けの腕トレ完全ガイドをEbook形式で提供し、最初の売上が立ちました。さらにクリエイターと共に、約35万円の売上を上げることにも成功。正しいやり方を教えてくれる環境と、第三者の目線で意見をくれる仲間のおかげです。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/sakiko.jpg" alt="Sakiko さん" loading="lazy" /></div>
           <div><div class="tname">Sakiko さん</div><div class="trole">Ebook販売支援</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">KNCTに入ってから、Whopでのコミュニティ形成を進めることができました。外資エアライン面接対策の発信で、競合が有料化している情報も積極的にGIVEする方針で運用。少しずつ信頼が積み上がり、個別相談会の参加率も大きく伸びました。「データ」と「情報」を区別する発信の考え方が、結果につながったと感じています。</p>
+      <div class="tcard reveal">        <p class="tquote">KNCTに入ってから、Whopでのコミュニティ形成を進めることができました。外資エアライン面接対策の発信で、競合が有料化している情報も積極的にGIVEする方針で運用。少しずつ信頼が積み上がり、個別相談会の参加率も大きく伸びました。「データ」と「情報」を区別する発信の考え方が、結果につながったと感じています。</p>
         <div class="tauthor">
           <div class="tava"><img src="assets/people/aya.jpg" alt="Aya さん" loading="lazy" /></div>
           <div><div class="tname">Aya さん</div><div class="trole">外資エアライン面接対策</div></div>
         </div>
       </div>
 
-      <div class="tcard reveal">
-        <div class="tstars">★★★★★</div>
-        <p class="tquote">ICPの設計、刺さるオファーの作り方、痛みの言語化といったオペレーターのマインドセットを習得し、3ヶ月でオペレーター契約を3件獲得。さらに自身も、90日でパーソナルブランドを構築する1on1コーチングを販売し、5月は売上150万円を達成しました。今後はローチケット商品へと事業を広げつつ、オペレーター事業も拡大していきます。</p>
+      <div class="tcard reveal">        <p class="tquote">ICPの設計、刺さるオファーの作り方、痛みの言語化といったオペレーターのマインドセットを習得し、3ヶ月でオペレーター契約を3件獲得。さらに自身も、90日でパーソナルブランドを構築する1on1コーチングを販売し、5月は売上150万円を達成しました。今後はローチケット商品へと事業を広げつつ、オペレーター事業も拡大していきます。</p>
         <div class="tauthor">
           <div class="tava">Y</div>
           <div><div class="tname">Yone さん</div><div class="trole">オペレーター・1on1コーチング</div></div>
